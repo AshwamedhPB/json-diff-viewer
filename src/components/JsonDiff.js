@@ -25,12 +25,12 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
     setCurrentNewValue(newValue);
   }, [newValue]);
 
-  const oldObj = parseJson(currentOldValue);
-  const newObj = parseJson(currentNewValue) || parseJson(newValue);
+  const leftObj = parseJson(currentOldValue);
+  const rightObj = parseJson(currentNewValue) || parseJson(newValue);
 
   useEffect(() => {
-    setupEditorMarkers(oldEditor, oldObj, newObj, true);
-    setupEditorMarkers(newEditor, oldObj, newObj, false);
+    setupEditorMarkers(oldEditor, leftObj, rightObj, true);
+    setupEditorMarkers(newEditor, leftObj, rightObj, false);
   }, [oldEditor, newEditor, currentOldValue, currentNewValue]);
 
   const handleOldEditChange = (value) => {
@@ -52,7 +52,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
     <div className="json-viewer-container">
       <div className="comparison-container">
         <div className="panel">
-          <div className="panel-title">Old Config</div>
+          <div className="panel-title">Left Config</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig(true)}
@@ -60,7 +60,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
               onLoad={setOldEditor}
             />
           </div>
-          <div className="panel-title">Edit Old Config</div>
+          <div className="panel-title">Edit Left Config</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig()}
@@ -71,20 +71,20 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
           <div className="panel-footer">
             <button 
               className="export-button"
-              onClick={() => downloadJson(currentOldValue, 'old-config.json')}
+              onClick={() => downloadJson(currentOldValue, 'left-config.json')}
             >
-              Export Old Config
+              Export Left Config
             </button>
             <button 
               className="reset-button"
               onClick={onResetOld}
             >
-              Reset Old Config
+              Reset Left Config
             </button>
           </div>
         </div>
         <div className="panel">
-          <div className="panel-title">New Config</div>
+          <div className="panel-title">Right Config</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig(true)}
@@ -92,7 +92,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
               onLoad={setNewEditor}
             />
           </div>
-          <div className="panel-title">Edit New Config</div>
+          <div className="panel-title">Edit Right Config</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig()}
@@ -103,15 +103,15 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
           <div className="panel-footer">
             <button 
               className="export-button"
-              onClick={() => downloadJson(currentNewValue, 'new-config.json')}
+              onClick={() => downloadJson(currentNewValue, 'right-config.json')}
             >
-              Export New Config
+              Export Right Config
             </button>
             <button 
               className="reset-button"
               onClick={onResetNew}
             >
-              Reset New Config
+              Reset Right Config
             </button>
           </div>
         </div>
