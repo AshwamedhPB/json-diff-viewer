@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import JsonDiff from './components/JsonDiff';
 import ErrorMessage from './components/ErrorMessage';
 import customConfig from './data/customConfig.json';

@@ -2,6 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f8f9fa;
 }
 
 /* Reset default margins and padding */
@@ -28,11 +29,6 @@ body {
   text-align: center;
 }
 
-.button-group {
-  display: flex;
-  gap: 12px;
-}
-
 .merge-button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -49,7 +45,7 @@ body {
 }
 
 .merge-button:active {
-  background-color: #298e46;
+  background-color: #3d8b40;
 }
 
 .panel-footer {

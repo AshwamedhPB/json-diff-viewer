@@ -154,13 +154,14 @@ export const validateMerge = (target, source) => {
     
     if (type1 !== type2) {
       issues.push({
-        path: path,
-        message: `Type mismatch: ${path} is ${type1} in target but ${type2} in source`,
+        path: path || 'root',
+        message: `Type mismatch: ${path || 'root'} is ${type1} in target but ${type2} in source`,
         severity: 'error'
       });
+      return;
     }
     
-    if (type1 === 'object' && type2 === 'object') {
+    if (type1 === 'object') {
       Object.keys(val2).forEach(key => {
         const newPath = path ? `${path}.${key}` : key;
         if (key in val1) {
