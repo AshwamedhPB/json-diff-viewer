@@ -3,7 +3,7 @@ import JsonDiff from './components/JsonDiff';
 import ErrorMessage from './components/ErrorMessage';
 import customConfig from './data/customConfig.json';
 import rightVersionConfig from './data/newVersionConfig.json';
-import { formatJson, mergeConfigs } from './utils/jsonUtils';
+import { formatJson, mergeJsons } from './utils/jsonUtils';
 import './App.css';
 
 function App() {
@@ -28,25 +28,25 @@ function App() {
 
   const handleMergeLeft = () => {
     try {
-      const mergedJson = mergeConfigs(rightJson, leftJson);
+      const mergedJson = mergeJsons(rightJson, leftJson);
       setLeftJson(mergedJson);
       setErrorMessage('');
       console.log('Successfully merged right into left');
     } catch (error) {
       console.error('Error during merge:', error);
-      setErrorMessage(error.message || 'Failed to merge configurations. Please ensure both JSONs are valid.');
+      setErrorMessage(error.message || 'Failed to merge JSONs. Please ensure both JSONs are valid.');
     }
   };
 
   const handleMergeRight = () => {
     try {
-      const mergedJson = mergeConfigs(leftJson, rightJson);
+      const mergedJson = mergeJsons(leftJson, rightJson);
       setRightJson(mergedJson);
       setErrorMessage('');
       console.log('Successfully merged left into right');
     } catch (error) {
       console.error('Error during merge:', error);
-      setErrorMessage(error.message || 'Failed to merge configurations. Please ensure both JSONs are valid.');
+      setErrorMessage(error.message || 'Failed to merge JSONs. Please ensure both JSONs are valid.');
     }
   };
 

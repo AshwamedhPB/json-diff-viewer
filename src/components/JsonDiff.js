@@ -52,7 +52,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
     <div className="json-viewer-container">
       <div className="comparison-container">
         <div className="panel">
-          <div className="panel-title">Left Config</div>
+          <div className="panel-title">Left JSON</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig(true)}
@@ -60,7 +60,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
               onLoad={setOldEditor}
             />
           </div>
-          <div className="panel-title">Edit Left Config</div>
+          <div className="panel-title">Edit Left JSON</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig()}
@@ -71,20 +71,20 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
           <div className="panel-footer">
             <button 
               className="export-button"
-              onClick={() => downloadJson(currentOldValue, 'left-config.json')}
+              onClick={() => downloadJson(currentOldValue, 'left-json.json')}
             >
-              Export Left Config
+              Export Left JSON
             </button>
             <button 
               className="reset-button"
               onClick={onResetOld}
             >
-              Reset Left Config
+              Reset Left JSON
             </button>
           </div>
         </div>
         <div className="panel">
-          <div className="panel-title">Right Config</div>
+          <div className="panel-title">Right JSON</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig(true)}
@@ -92,7 +92,7 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
               onLoad={setNewEditor}
             />
           </div>
-          <div className="panel-title">Edit Right Config</div>
+          <div className="panel-title">Edit Right JSON</div>
           <div className="editor-container">
             <AceEditor
               {...getEditorConfig()}
@@ -103,15 +103,15 @@ const JsonDiff = ({ oldValue, newValue, onChange, onResetOld, onResetNew }) => {
           <div className="panel-footer">
             <button 
               className="export-button"
-              onClick={() => downloadJson(currentNewValue, 'right-config.json')}
+              onClick={() => downloadJson(currentNewValue, 'right-json.json')}
             >
-              Export Right Config
+              Export Right JSON
             </button>
             <button 
               className="reset-button"
               onClick={onResetNew}
             >
-              Reset Right Config
+              Reset Right JSON
             </button>
           </div>
         </div>

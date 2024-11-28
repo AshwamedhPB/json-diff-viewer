@@ -175,11 +175,11 @@ export const validateMerge = (target, source) => {
   return issues;
 };
 
-export const mergeConfigs = (sourceConfig, targetConfig) => {
+export const mergeJsons = (sourceJson, targetJson) => {
   try {
     // Parse JSON strings if needed
-    const source = typeof sourceConfig === 'string' ? JSON.parse(sourceConfig) : sourceConfig;
-    const target = typeof targetConfig === 'string' ? JSON.parse(targetConfig) : targetConfig;
+    const source = typeof sourceJson === 'string' ? JSON.parse(sourceJson) : sourceJson;
+    const target = typeof targetJson === 'string' ? JSON.parse(targetJson) : targetJson;
     
     // Validate before merging
     const issues = validateMerge(target, source);
@@ -187,7 +187,7 @@ export const mergeConfigs = (sourceConfig, targetConfig) => {
       const errorMessages = issues
         .map(issue => `- ${issue.path}: ${issue.message}`)
         .join('\n');
-      throw new Error(`Cannot safely merge configurations:\n${errorMessages}`);
+      throw new Error(`Cannot safely merge JSONs:\n${errorMessages}`);
     }
 
     // Perform the deep merge
@@ -196,7 +196,7 @@ export const mergeConfigs = (sourceConfig, targetConfig) => {
     // Return formatted JSON string
     return JSON.stringify(merged, null, 2);
   } catch (error) {
-    console.error('Error merging configs:', error);
+    console.error('Error merging JSONs:', error);
     throw error;
   }
 };
