@@ -1,0 +1,34 @@
+{
+  "name": "Product Catalog",
+  "version": "1.0.0",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Electronics",
+      "products": [
+        {
+          "id": "E001",
+          "name": "Smartphone",
+          "price": 699.99,
+          "specs": {
+            "screen": "6.5 inch",
+            "storage": "128GB",
+            "camera": "48MP"
+          }
+        },
+        {
+          "id": "E002",
+          "name": "Laptop",
+          "price": 1299.99,
+          "specs": {
+            "processor": "Intel i7",
+            "ram": "16GB",
+            "storage": "512GB SSD"
+          }
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2023-01-01",
+  "isActive": true
+}

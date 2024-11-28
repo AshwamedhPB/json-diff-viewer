@@ -1,0 +1,35 @@
+{
+  "name": "Product Catalog",
+  "version": "1.1.0",
+  "categories": [
+    {
+      "id": 1,
+      "name": "Electronics",
+      "products": [
+        {
+          "id": "E001",
+          "name": "Smartphone Pro",
+          "price": 799.99,
+          "specs": {
+            "screen": "6.7 inch",
+            "storage": "256GB",
+            "camera": "108MP"
+          }
+        },
+        {
+          "id": "E002",
+          "name": "Laptop",
+          "price": 1299.99,
+          "specs": {
+            "processor": "Intel i9",
+            "ram": "32GB",
+            "storage": "1TB SSD"
+          }
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2023-06-01",
+  "isActive": true,
+  "newFeature": "5G Support"
+}

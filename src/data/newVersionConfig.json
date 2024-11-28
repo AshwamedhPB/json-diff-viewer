@@ -1,0 +1,96 @@
+{
+  "application": {
+    "name": "StandardApp",
+    "version": "2.0.0",
+    "theme": {
+      "primary": "#2196F3",
+      "secondary": "#FF4081",
+      "customFont": "Inter",
+      "darkMode": true
+    },
+    "features": {
+      "dashboard": {
+        "enabled": true,
+        "widgets": ["sales", "inventory", "analytics", "performance"],
+        "refreshInterval": 60,
+        "caching": {
+          "enabled": true,
+          "duration": 300
+        }
+      },
+      "users": {
+        "maxUsers": 100,
+        "roles": ["admin", "manager", "user", "viewer"],
+        "sessionTimeout": 1800,
+        "mfa": {
+          "enabled": true,
+          "methods": ["authenticator", "sms"]
+        }
+      },
+      "notifications": {
+        "email": {
+          "enabled": true,
+          "server": "smtp.standardapp.com",
+          "port": 587,
+          "useTLS": true
+        },
+        "slack": {
+          "enabled": true,
+          "webhook": "https://hooks.slack.com/standard"
+        },
+        "mobile": {
+          "enabled": true,
+          "providers": ["fcm", "apns"]
+        }
+      }
+    },
+    "api": {
+      "baseUrl": "https://api.standardapp.com",
+      "timeout": 15000,
+      "retryAttempts": 5,
+      "rateLimit": {
+        "enabled": true,
+        "maxRequests": 1000,
+        "window": 60
+      }
+    },
+    "monitoring": {
+      "enabled": true,
+      "metrics": ["cpu", "memory", "requests"],
+      "alerting": {
+        "enabled": true,
+        "thresholds": {
+          "cpu": 80,
+          "memory": 90
+        }
+      }
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "oauth2",
+      "provider": "standard-idp",
+      "clientId": "default123",
+      "allowedDomains": ["*"],
+      "jwtExpiry": 3600,
+      "passwordPolicy": {
+        "minLength": 12,
+        "requireSpecialChars": true,
+        "requireNumbers": true
+      }
+    },
+    "encryption": {
+      "algorithm": "AES-256-GCM",
+      "enabled": true,
+      "keyRotation": {
+        "enabled": true,
+        "interval": "30d"
+      }
+    },
+    "audit": {
+      "enabled": true,
+      "retention": "90d",
+      "detailed": true
+    }
+  }
+}

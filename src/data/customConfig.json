@@ -1,0 +1,61 @@
+{
+  "application": {
+    "name": "ClientApp",
+    "version": "1.0.0",
+    "theme": {
+      "primary": "#1976D2",
+      "secondary": "#424242",
+      "customFont": "Roboto"
+    },
+    "features": {
+      "dashboard": {
+        "enabled": true,
+        "widgets": ["sales", "inventory", "customReport"],
+        "refreshInterval": 300
+      },
+      "users": {
+        "maxUsers": 50,
+        "roles": ["admin", "manager", "user", "custom-role"],
+        "sessionTimeout": 3600
+      },
+      "notifications": {
+        "email": {
+          "enabled": true,
+          "server": "client-smtp.example.com",
+          "port": 587
+        },
+        "slack": {
+          "enabled": false
+        }
+      }
+    },
+    "api": {
+      "baseUrl": "https://api.client-domain.com",
+      "timeout": 30000,
+      "retryAttempts": 3
+    },
+    "customizations": {
+      "logo": "client-logo.png",
+      "welcomeMessage": "Welcome to ClientApp",
+      "customReports": [
+        {
+          "name": "Monthly Sales",
+          "schedule": "monthly",
+          "recipients": ["manager@client.com"]
+        }
+      ]
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "oauth2",
+      "provider": "custom-idp",
+      "clientId": "client123",
+      "allowedDomains": ["client-domain.com"]
+    },
+    "encryption": {
+      "algorithm": "AES-256",
+      "enabled": true
+    }
+  }
+}
